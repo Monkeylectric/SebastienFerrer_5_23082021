@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Orinoco - Panier</title>
+    <link rel="shortcut icon" type="image/png" href="favicon.png"/>
+    
+    <!-- Bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-U1DAWAznBHeqEIlVSCgzq+c9gqGAJn5c/t99JyeKa9xxaYpSvHU5awsuZVVFIhvj" crossorigin="anonymous"></script>
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="front/css/style.css">
+
+    <!-- Javascript -->
+    <script src="front/js/common.js"></script>
+    <script src="front/js/cart.js"></script>
+</head>
+<body>
+    <script>
+        window.addEventListener("DOMContentLoaded", (event) => {
+            console.log("Initialisation du panier...");
+            getCartElementNumber();
+            let cart = new Cart();
+            cart.getCart();
+            //cart.removeProduct();
+        });
+    </script>
+    <header>
+        <!-- Navbar -->
+        <nav class="navbar navbar-expand-lg navbar-light">
+            <div class="container">
+                <a href="index.html" class="navbar-brand">
+                    <h1>Orinoco</h1>
+                </a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
+                    <div class="d-flex">
+                        <ul class="navbar-nav">
+                            <li class="nav-item">
+                                <a class="nav-link" href="index.html">
+                                    <img src="front/icons/home.svg" alt="Accueil" title="Accueil" width="24" height="24">
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">
+                                    <img src="front/icons/user.svg" alt="Accueil" title="Mon compte" width="24" height="24">
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link active" href="cart.html">
+                                    <img src="front/icons/cart.svg" alt="Panier" title="Panier" width="24" height="24">
+                                    <div id="nbr_element"></div>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <section id="cart__section" class="contenair">
+            <div id="cart__empty">
+                <p id="cart__empty__text">Aucun élément dans le panier</p>
+            </div>
+            <div id="cart__container">
+                <div id="cart__header">Mon Panier: </div>
+                <div id="cart__main"></div>
+                <div id="cart__amount">
+                    <p id='cart__amount__sum'>Total: <span id="cart__sum"></span></p>
+                </div>
+                <div id="validate__form__header">Informations de commande: </div>
+                <form id="validate_form" method="POST">
+                    <!-- firstName / lastName / address / city / email-->
+                    <div class="row">
+                        <div class="col-md-6">
+                            <label for="userLastName" class="form-label">Nom:*</label>
+                            <input type="text" class="form-control" id="userLastName" pattern="^[a-zA-z-éè]{1,15}$" required>
+                        </div>
+                        <div class="col-md-6">
+                            <label for="userFirstName" class="form-label">Prénom:*</label>
+                            <input type="text" class="form-control" id="userFirstName" pattern="^[a-zA-z-éè]{1,15}$" required>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <label for="userAddress" class="form-label">Adresse:*</label>
+                            <input type="text" class="form-control" id="userAddress" pattern="[a-zA-z0-9éè ]{1,40}" required>
+                        </div>
+                        <div class="col-md-6">
+                            <label for="userCity" class="form-label">Ville:*</label>
+                            <input type="text" class="form-control" id="userCity" pattern="[a-zA-z]{1,30}" required>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <label for="userEmail" class="form-label">Email:*</label>
+                            <!-- pattern="/[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?/" -->
+                            <input type="email" class="form-control" id="userEmail" aria-describedby="emailHelp" pattern="^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" required>
+                            <div id="emailHelp" class="form-text">* Informations necessaires.</div>
+                        </div>
+                        <!-- <div class="col-md-6 form-check">
+                            <input type="checkbox" class="form-check-input" id="exampleCheck1" required>
+                            <label class="form-check-label" for="exampleCheck1">J'ai lu et j'accepte les conditions d'utilisation</label>
+                        </div> -->
+                    </div>
+                    <button type="submit" class="col-12 btn mb-3">Valider la commande</button>
+                </form>
+            </div>
+        </section>
+    </main>
+
+    <template>
+        <div class="cart__card" id="">
+            <div class="cart__imgContainer">
+                <img src="" alt="">
+            </div>
+            <div class="cart__text">
+                <!-- <h4></h4>
+                <p class="cart__desc"></p> -->
+            </div>
+            <div class="cart__lense">
+                <!-- <p></p> -->
+            </div>
+            <div class="cart__quantity">
+                <!-- <p></p> -->
+            </div>
+            <div class="cart__price">
+                <!-- <p></p> -->
+            </div>
+            <div class="cart__remove btn btn-danger">
+                <!-- <p></p> -->
+            </div>
+        </div>
+    </template>
+</body>
+</html>
