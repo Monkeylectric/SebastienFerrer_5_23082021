@@ -30,7 +30,8 @@
         <!-- Navbar -->
         <nav class="navbar navbar-expand-lg navbar-light">
             <div class="container">
-                <a href="index.html" class="navbar-brand">
+                <a href="index.html" class="navbar-brand d-flex align-items-end">
+                    <img class="logo_orinoco" src="front/icons/logo.png" alt="logo Orinoco">
                     <h1>Orinoco</h1>
                 </a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -76,12 +77,16 @@
                         <p id="product__description"></p>
         
                         <div id="product__formHeader__choices">
-                            <label for="product__select">Choix de la lentille</label>
-                            <select id="product__select" class="form-select" aria-label="Lenses choice"></select>
-                            <label for="product__quantity">Quantité</label>
-                            <input type="number" id="product__quantity" name="product__quantity" value="1" min="1" max="100">
-                            <div id="productHelp" class="form-text">Livraison gratuite !</div>
+                            <div>
+                                <label for="product__select">Choix de la lentille</label>
+                                <select id="product__select" class="form-select" aria-label="Lenses choice"></select>
+                            </div>
+                            <div>
+                                <label for="product__quantity">Quantité</label>
+                                <input type="number" id="product__quantity" name="product__quantity" value="1" min="1" max="100">
+                            </div>
                         </div>
+                        <div id="productHelp" class="form-text">Livraison gratuite !</div>
                     </div>
     
                     <div id="product__formFooter">
