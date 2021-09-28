@@ -16,7 +16,7 @@ class Cart {
         this.productRemove       = this.temp.content.querySelector(".cart__remove"); // this.item.children[5];
     }
 
-    // ----- Méthode getCart() permettant d'ajouter les produits dans le panier ----- //
+    // ----- Méthode getCart() permettant de récuperer les produits dans le panier ----- //
     getCart() {
         // ----- Récuperation des produits ajoutés au panier ------ //
         if(!localStorage.getItem("productsCart")){
@@ -126,7 +126,6 @@ class Cart {
             // -- Appel de la méthode getOrder()
             this.getOrder();
         })
-
     }
 
     // ----- Méthode getOrder() permettant d'envoyer toutes les informations à l'api ----- //
@@ -184,6 +183,5 @@ class Cart {
             .catch(err => {
                 console.log(err);
             })
-        
     }
 }

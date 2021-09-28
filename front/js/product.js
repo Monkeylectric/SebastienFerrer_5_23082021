@@ -84,16 +84,19 @@ class Product {
         this.productForm.addEventListener("submit", (e) => {
             e.preventDefault();
 
+            // -- Ajout de la séléction de la lentille et de la quanité dans le produit
             this.product.lenseSelected   = this.productSelect.options[this.productSelect.selectedIndex].text;
             this.product.quantity        = this.productQuantity.value;
             console.log(this.product);
             //console.log("Lentille: " + productSelect.options[productSelect.selectedIndex].text);
 
+            // -- Apparition du popup
             this.productOverlay.style.display = "flex";
             setTimeout(() => {
                 this.productValidCard.style.opacity = 1;
             }, 50);
 
+            // -- Mise à jour du panier dans le localStorage
             if (localStorage.getItem("productsCart")){
                 this.productsCart = JSON.parse(localStorage.getItem("productsCart"));
                 //console.log(productsCard);

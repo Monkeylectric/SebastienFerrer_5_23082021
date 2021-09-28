@@ -1,5 +1,7 @@
 /**
+ * 
  * Get element number in cart
+ * 
  */
 const getCartElementNumber = () => {
     const nbrElement = document.querySelector("#nbr_element");
