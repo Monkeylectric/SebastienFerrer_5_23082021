@@ -59,6 +59,11 @@ class Cart {
 
     // ----- Méthode removeProduct() permettant de supprimer le produit dans le panier ----- //
     removeProduct() {
+        document.querySelector("#cart__remove_all").addEventListener("click", () => {
+            localStorage.removeItem("productsCart");
+            document.location.reload();
+        });
+
         // ----- Event quand on clique sur le bouton supprimer ----- //
         document.querySelectorAll(".cart__remove").forEach((btn, btn_id) => {
 
